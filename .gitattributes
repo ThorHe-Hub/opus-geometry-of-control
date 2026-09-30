@@ -1,0 +1,2 @@
+# bash chokes on CRLF; keep shell scripts LF even where core.autocrlf converts on checkout
+*.sh text eol=lf
