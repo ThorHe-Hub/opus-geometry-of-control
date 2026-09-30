@@ -1,0 +1,12 @@
+# Python env for font subsetting / ffmpeg (see requirements.txt)
+.venv/
+# build scratch, renders, review sheets
+.cache/
+dist/
+tmp/
+# full source fonts (40 MB): tools/fetch_fonts.sh and tools/fetch_vendor.sh download them again
+tools/fonts-src/
+node_modules/
+__pycache__/
+.DS_Store
+Thumbs.db

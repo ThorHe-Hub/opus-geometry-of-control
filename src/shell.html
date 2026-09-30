@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>THE GEOMETRY OF CONTROL · 控制的几何</title>
+<style>
+/*__FONTS__*/
+html,body{margin:0;height:100%;background:#000;overflow:hidden;color:#cfe8ff;font-family:"GoC Mono",monospace}
+#stage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+#stage canvas{display:block;background:#000}
+#loader{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;background:#000;z-index:10;transition:opacity .8s}
+#loader h1{margin:0;font:400 22px Michroma,sans-serif;letter-spacing:.45em;color:#e8f4ff}
+#loader h2{margin:0;font:400 15px "Noto Serif SC",serif;letter-spacing:.6em;color:#8fb4d0}
+#loader .bar{width:280px;height:2px;background:#123;position:relative;overflow:hidden}
+#loader .bar i{position:absolute;left:0;top:0;bottom:0;width:0;background:#7fdcff;box-shadow:0 0 8px #7fdcff}
+#loader .msg{font-size:11px;letter-spacing:.2em;color:#5d7f99;min-height:14px}
+#loader button{margin-top:10px;padding:12px 34px;border:1px solid #3a6a88;background:transparent;color:#cfe8ff;font:400 12px Michroma,sans-serif;letter-spacing:.4em;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .6s,border-color .3s}
+#loader button.ready{opacity:1;pointer-events:auto}
+#loader button:hover{border-color:#7fdcff}
+#loader button:focus-visible{outline:2px solid #7fdcff;outline-offset:3px}
+#loader .keys{font-size:10px;color:#3f5f78;letter-spacing:.12em;margin-top:6px}
+#scrub{position:absolute;left:0;right:0;bottom:0;height:18px;opacity:0;transition:opacity .4s;cursor:pointer;z-index:5}
+#scrub:hover,#scrub.show{opacity:1}
+#scrub i{position:absolute;left:0;top:8px;height:2px;background:#7fdcff}
+#scrub b{position:absolute;top:8px;height:2px;left:0;right:0;background:rgba(127,220,255,.15)}
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<div id="scrub" role="slider" aria-label="时间轴" aria-valuemin="0" tabindex="0"><b></b><i></i></div>
+<div id="loader" role="dialog" aria-label="加载">
+  <h1>THE GEOMETRY OF CONTROL</h1>
+  <h2>控制的几何</h2>
+  <div class="bar"><i id="lbar"></i></div>
+  <div class="msg" id="lmsg" aria-live="polite">LOADING</div>
+  <button id="go" type="button">播放 · PLAY</button>
+  <div class="keys">SPACE 暂停 · ←/→ 5s · 1–9 跳场景 · H 界面 · F 全屏 · M 静音</div>
+</div>
+<script>
+/*__VENDOR__*/
+</script>
+<script>
+// three.js is normally inlined above; only if it is missing, load r128 + postprocessing from a CDN with fallbacks.
+(function () {
+  if (window.THREE && THREE.UnrealBloomPass) { window.addEventListener('DOMContentLoaded', function () { window.__startApp(); }); return; }
+  var BASES = [
+    'https://cdn.jsdelivr.net/npm/three@0.128.0/',
+    'https://unpkg.com/three@0.128.0/',
+    'https://registry.npmmirror.com/three/0.128.0/files/'
+  ];
+  var FILES = [
+    'build/three.min.js',
+    'examples/js/shaders/CopyShader.js',
+    'examples/js/shaders/LuminosityHighPassShader.js',
+    'examples/js/postprocessing/EffectComposer.js',
+    'examples/js/postprocessing/RenderPass.js',
+    'examples/js/postprocessing/ShaderPass.js',
+    'examples/js/postprocessing/UnrealBloomPass.js'
+  ];
+  var baseIdx = 0;
+  function load(i) {
+    if (i >= FILES.length) { window.__startApp(); return; }
+    var s = document.createElement('script');
+    s.src = BASES[baseIdx] + FILES[i];
+    s.onload = function () { load(i + 1); };
+    s.onerror = function () {
+      s.remove();
+      if (++baseIdx >= BASES.length) {
+        document.getElementById('lmsg').textContent = 'CDN 加载失败，请检查网络 · three.js unavailable';
+        return;
+      }
+      load(i);
+    };
+    document.head.appendChild(s);
+  }
+  window.addEventListener('DOMContentLoaded', function () { load(0); });
+})();
+</script>
+<script>
+window.__startApp = function () {
+/*__APP__*/
+};
+</script>
+</body>
+</html>

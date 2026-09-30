@@ -1,0 +1,4 @@
+# tools/subset_fonts.py (WOFF2 subsets) and the ffmpeg binary the export tools use
+fonttools==4.55.3
+Brotli==1.1.0
+imageio-ffmpeg==0.5.1
