@@ -4,7 +4,7 @@
 
 [![控制的几何](docs/cover.jpg)](BILIBILI_URL)
 
-▶ 观看：[哔哩哔哩](BILIBILI_URL) · [YouTube](YOUTUBE_URL)
+▶ 观看：[哔哩哔哩](BILIBILI_URL) · [https://m.youtube.com/watch?v=mGLhVaXlIyg](YOUTUBE_URL)
 
 *所有不稳定的东西，终将倾倒。除非，它能感知自己的误差。*
 
