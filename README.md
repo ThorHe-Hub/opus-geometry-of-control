@@ -4,7 +4,7 @@
 
 [![The Geometry of Control](docs/cover.jpg)](YOUTUBE_URL)
 
-▶ Watch: [YouTube](YOUTUBE_URL) · [https://b23.tv/9wUthtE](BILIBILI_URL)
+▶ Watch: [https://m.youtube.com/watch?v=mGLhVaXlIyg](YOUTUBE_URL) · [https://b23.tv/9wUthtE](BILIBILI_URL)
 
 *Everything unstable eventually falls. Unless it can sense its own error.*
 
